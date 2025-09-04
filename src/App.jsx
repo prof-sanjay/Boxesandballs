@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import './index.css';
 
 function App() {
-  const [initial, setInitial] = useState(1);
+  const [initial, setInitial] = useState(0);
   const [boxes, setBoxes] = useState({
     A: 0,
     B: 0,
@@ -11,7 +12,7 @@ function App() {
 
 
   const handleInit = () => {
-    setBoxes({
+    setBoxes({  
       A: initial,
       B: initial * 2,
       C: initial * 4,
@@ -37,8 +38,8 @@ function App() {
     }));
   };
 
-  const choice3 = () => {
-    setBoxes((prev) => ({
+  const choice3=()=>{
+    setBoxes((prev)=>({
       A: 0,
       B: prev.B + prev.A,
       C: 0,
@@ -47,10 +48,11 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
+    <div className="container">
       <h1>Box and Balls</h1>
 
       <input
+      className="in"
         type="number"
         value={initial}
         onChange={(e) => setInitial(Number(e.target.value))}
