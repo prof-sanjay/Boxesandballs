@@ -1,69 +1,76 @@
-import React, { useState } from "react";
-import './index.css';
+import react, {useState} from 'react'
 
-function App() {
-  const [initial, setInitial] = useState(0);
-  const [boxes, setBoxes] = useState({
-    A: 0,
-    B: 0,
-    C: 0,
-    D: 0,
-  });
+function App(){
+
+  const[num,setNum]=useState();
+  const[a,setA]=useState(0);
+  const[b,setB]=useState(0);
+  const[c,setC]=useState(0);
+  const[d,setD]=useState(0);
+  const[adis,setAdis]=useState(0);
+  const[bdis,setBdis]=useState(0);
+  const[cdis,setCdis]=useState(0);
+  const[ddis,setDdis]=useState(0);
+  let a1=num;
+  let b1=num*2;
+  let c1=b1*2;
+  let d1=c1*2;
+
+  function Init(){
+    setA(a1);
+    setB(b1);
+    setC(c1);
+    setD(d1);
+  }
+
+function choice1(){
+  let a2=a1*2;
+  let b2=b1*2;
+  let c2=c1*2;
+  let d2=d1*2;
+  setA(a2);
+  setB(b2);
+  setC(c2);
+  setD(d2);
+}
 
 
-  const handleInit = () => {
-    setBoxes({  
-      A: initial,
-      B: initial * 2,
-      C: initial * 4,
-      D: initial * 8,
-    });
-  };
 
-  const choice1 = () => {
-    setBoxes((prev) => ({
-      A: prev.A * 2,
-      B: prev.B * 2,
-      C: prev.C * 2,
-      D: prev.D * 2,
-    }));
-  };
+function choice2(){
+  let a2=0;
+  let b2=0;
+  let c2=0;
+  let d2=a1+b1+c1+d1;
+  setA(a2);
+  setB(b2);
+  setC(c2);
+  setD(d2);
+}
 
-  const choice2 = () => {
-    setBoxes((prev) => ({
-      A: 0,
-      B: prev.A,
-      C: 0,
-      D: prev.B,
-    }));
-  };
+function choice3(){
+  let a2=0;
+  let b2=a1+b1;
+  let c2=0;
+  let d2=c1+d1;
+  setA(a2);
+  setB(b2);
+  setC(c2);
+  setD(d2);
+}
 
-  const choice3=()=>{
-    setBoxes((prev)=>({
-      A: 0,
-      B: prev.B + prev.A,
-      C: 0,
-      D: prev.D + prev.C,
-    }));
-  };
-
-  return (
+  return(
     <div className="container">
       <h1>Box and Balls</h1>
 
-      <input
-      className="in"
-        type="number"
-        value={initial}
-        onChange={(e) => setInitial(Number(e.target.value))}
+      <input className="in" type="number" value={num} onChange={(e) => setNum(Number(e.target.value))}
       />
-      <button onClick={handleInit}>Initialize</button>
+      <button onClick={Init}>Initialize</button>
 
-      <div style={{ margin: "20px" }}>
-        <p>Violet: {boxes.A}</p>
-        <p>Orange: {boxes.B}</p>
-        <p>Green: {boxes.C}</p>
-        <p>White: {boxes.D}</p>
+      <div className='subbox'>
+        <p>Violet: {a}</p>
+        <p>Orange: {b}</p>
+        <p>Green: {c}</p>
+        <p>White: {d}</p>
       </div>
 
       <div>
@@ -72,7 +79,6 @@ function App() {
         <button onClick={choice3}>Choice 3</button>
       </div>
     </div>
-  );
+  )
 }
-
-export default App;
+export default App
